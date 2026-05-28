@@ -11,8 +11,12 @@ class Lnk: public cSimpleModule {
 private:
     cQueue buffer;
     cMessage *endServiceEvent;
+    // Tiempo
     simtime_t serviceTime;
+    simtime_t totalServiceTime;
+    // Buffer
     cOutVector bufferSizeVector;
+    cStdDev bufferLengthStats;
 public:
     Lnk();
     virtual ~Lnk();
@@ -37,9 +41,16 @@ Lnk::~Lnk() {
 void Lnk::initialize() {
     endServiceEvent = new cMessage("endService");
     bufferSizeVector.setName("Buffer Size");
+    bufferLengthStats.setName("BufferLengthStats");
+    totalServiceTime = 0;
 }
 
 void Lnk::finish() {
+    recordScalar("Average buffer length", bufferLengthStats.getMean());
+    recordScalar("Max buffer length", bufferLengthStats.getMax());
+
+    double utilization = (totalServiceTime / simTime()) * 100.0;
+    recordScalar("Link utilization (%)", utilization);
 }
 
 void Lnk::handleMessage(cMessage *msg) {
@@ -48,7 +59,11 @@ void Lnk::handleMessage(cMessage *msg) {
         if (!buffer.isEmpty()) {
             // dequeue
             Packet* pkt = (Packet*) buffer.pop();
+            // Buffer
             bufferSizeVector.record(buffer.getLength());
+            bufferLengthStats.collect(buffer.getLength());
+            // Tiempo
+            totalServiceTime += serviceTime;
             // send
             send(pkt, "toOut$o");
             serviceTime = pkt->getDuration();
@@ -59,6 +74,7 @@ void Lnk::handleMessage(cMessage *msg) {
             // enqueue
             buffer.insert(msg);
             bufferSizeVector.record(buffer.getLength());
+            bufferLengthStats.collect(buffer.getLength());
             // if the server is idle
             if (!endServiceEvent->isScheduled()) {
                 // start the service now

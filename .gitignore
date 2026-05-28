@@ -1,1 +1,26 @@
+# Archivos objeto y dependencias compiladas de C++
+*.o
+*.d
+*.out
+
+# Ejecutable generado (suele tomar el nombre de la carpeta u otro por defecto)
+redes26lab4g23
+lab4-kickstarter
+lab4
+packet_m.cc
+packet_m.h
+
+# Directorios generados por la ejecución de OMNeT++
 out/
+results/
+*.vec
+*.sca
+*.vci
+caso1_sin_control.csv
+caso2_sin_control.csv
+caso1_con_control.csv
+caso2_con_control.csv
+.qtenvrc
+*vscode/
+metricas.csv
+
