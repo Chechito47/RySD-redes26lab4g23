@@ -46,6 +46,11 @@ void Net::handleMessage(cMessage *msg) {
     }
     // If not, forward the packet to some else... to who?
     else {
+        // Leer el valor actual de hopCount
+        int currentHops = pkt->getHopCount();
+        //Le sumamos 1 y guardamos de nuevo en el paquete
+        pkt->setHopCount(currentHops + 1);
+
         // We send to link interface #0, which is the
         // one connected to the clockwise side of the ring
         // Is this the best choice? are there others?
