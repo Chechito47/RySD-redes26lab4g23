@@ -53,8 +53,8 @@
 
 % Datos del grupo — modifique estos campos
 \newcommand{\Titulo}{Routing Strategies for Ring and General Topologies in OMNeT++}
-\newcommand{\Grupo}{Grupo XX}
-\newcommand{\Integrantes}{Apellido, Nombre; Apellido, Nombre; Apellido, Nombre; Apellido, Nombre}
+\newcommand{\Grupo}{Grupo 23}
+\newcommand{\Integrantes}{Álvarez, Lis Ailín; Pinilla, Lautaro; Sabino, Lucas}
 \renewcommand{\refname}{Referencias}
 \renewcommand{\abstractname}{Abstract}
 \renewcommand{\appendixname}{Ap\'{e}ndice}
@@ -80,12 +80,7 @@
 
   \begin{abstract}
   \noindent
-  Write a concise abstract in English (150--250 words). Summarize the simulated
-  network scenarios, the routing algorithm you designed, the main performance
-  metrics (delay, hop count, buffer/link utilization, stability), and the key
-  findings when comparing your solution against the kickstarter baseline.
-  Mention whether routing loops were observed and, if applicable, how your
-  algorithm generalizes to arbitrary topologies.
+  This paper evaluates a baseline routing algorithm in an OMNeT++ ring network of 8 nodes, which forwards all packets through a fixed interface. Two traffic scenarios are analyzed: two sources and seven sources sending to node~5, with varying inter-arrival times. Metrics include delay, hop count, buffer occupancy, and link utilization. The baseline shows asymmetric load, long delays, and a stability threshold near 7~s, below which queues grow indefinitely. To overcome this, we propose a distance-based algorithm using both ring directions, discovered via periodic hello messages without OMNeT++ topology functions. Our algorithm selects the shortest path, balances traffic, and avoids loops. Results show significant reductions in delay and buffer usage, and a higher stability threshold. The design generalizes to arbitrary topologies through neighbor discovery and message exchange. No routing loops were observed.
   \end{abstract}
 
   \begin{IEEEkeywords}
@@ -93,7 +88,6 @@
   queueing, stability.
   \end{IEEEkeywords}
 
-  \vspace{0.5em}
 \end{@twocolumnfalse}
 ]
 
@@ -103,55 +97,53 @@
 \section{Introducción}
 \label{sec:intro}
 
-\guia{%
-  Presente el problema del laboratorio: enrutamiento en una capa de red con
-  múltiples entradas y salidas. Explique brevemente el modelo en anillo del
-  kickstarter, sus limitaciones (p.\,ej.\ siempre usa \texttt{toLnk[0]}) y el
-  objetivo de su trabajo: analizar el baseline, diseñar una estrategia mejor
-  y evaluarla con datos. Cierre con una frase que anticipe las conclusiones
-  principales. Extensión sugerida: 1 columna (medio párrafo denso).
-}
-
 Este artículo reporta el análisis y diseño de estrategias de enrutamiento
-implementadas sobre el modelo de red del Laboratorio~4. \textit{[Reemplace este
-párrafo con su introducción: contexto, motivación, objetivos específicos del
-grupo y organización del paper (Secciones~\ref{sec:modelo}--\ref{sec:conclusiones}).]}
+implementadas sobre el modelo de red del Laboratorio~4. Se estudia una red
+en anillo de ocho nodos en la que el algoritmo baseline reenvía siempre los
+paquetes por la misma interfaz (\texttt{toLnk[0]}), sin aprovechar el camino
+alternativo disponible. El objetivo es instrumentar métricas de desempeño,
+incluyendo demora, cantidad de saltos, ocupación de buffers y utilización de
+enlaces, evaluar el comportamiento del algoritmo baseline en distintos
+escenarios de tráfico y diseñar una estrategia de enrutamiento mejorada. El
+trabajo se organiza de la siguiente manera: la Sección~\ref{sec:modelo}
+describe el modelo de simulación; la Sección~\ref{sec:baseline} presenta el
+análisis del algoritmo baseline; la Sección~\ref{sec:nuevo} detalla el diseño
+del nuevo algoritmo; la Sección~\ref{sec:comparacion} compara los resultados
+obtenidos; y finalmente la Sección~\ref{sec:conclusiones} resume las
+conclusiones del trabajo.
 
-\textit{[Segundo párrafo sugerido: describa la limitación del algoritmo baseline
-(envío fijo por \texttt{toLnk[0]}), el impacto en demora y utilización de
-enlaces, y el criterio con el que evaluarán si una estrategia es ``mejor''
-(p.\,ej.\ menor demora media, menor variabilidad, ausencia de bucles, mayor
-throughput sostenible).]}
+La principal limitación del baseline es el uso exclusivo de una de las dos
+interfaces, lo que satura un sentido del anillo mientras el otro permanece
+vacío. Esto provoca demoras innecesarias, buffers largos y baja eficiencia.
+Una estrategia será considerada mejor si reduce la demora media, equilibra la
+carga entre ambas direcciones, evita bucles y permite sostener tasas de
+tráfico más altas antes de la saturación.
 
-\textit{[Tercer párrafo sugerido: resuma en 2--3 oraciones qué algoritmo
-propusieron y cuál fue la mejora principal observada, sin entrar aún en detalle
-técnico.]}
+Se propone un algoritmo de enrutamiento por distancia mínima que utiliza ambos
+sentidos del anillo, descubriendo la topología mediante mensajes hello. De
+esta forma, cada paquete sigue el camino más corto al destino. Se espera una
+mejora significativa en demora, balance de carga y umbral de estabilidad
+respecto del baseline, sin introducir bucles de enrutamiento.
 
 \section{Escenario y modelo de simulación}
 \label{sec:modelo}
 
-\guia{%
-  Describa la topología (anillo de 8 nodos, interfaces \texttt{lnk[0]} y
-  \texttt{lnk[1]}), las capas (\texttt{app}, \texttt{net}, \texttt{lnk}) y los
-  parámetros relevantes del \texttt{omnetpp.ini}. Incluya al menos una figura
-  (diagrama de topología o captura del modelo en el IDE). Referencie figuras y
-  tablas en el texto: ``como muestra la Fig.~\ref{fig:topologia}''.
-}
+La topología utilizada es un anillo de 8 nodos numerados del 0 al 7. Cada nodo posee dos interfaces full-duplex (denominadas \texttt{lnk[0]} y \texttt{lnk[1]}) que lo conectan con sus dos vecinos. Internamente, cada nodo se compone de tres submódulos: la capa de aplicación (\texttt{app}), que genera paquetes según una distribución exponencial con tamaño fijo; la capa de red (\texttt{net}), que implementa la lógica de enrutamiento; y dos capas de enlace (\texttt{lnk[0]} y \texttt{lnk[1]}), cada una con su propio buffer y un servidor que modela la transmisión a 1~Mbps con un retardo de propagación de 100~$\mu$s. La Figura~\ref{fig:topologia} muestra la disposición de la red.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figuras/network.png}
+  \caption{Topología en anillo de 8 nodos.}
+  \label{fig:topologia}
+\end{figure}
 
 \subsection{Topología y configuración de tráfico}
 
-\textit{[Describa nodos, enlaces full-duplex, fuentes de tráfico y parámetros
-como \texttt{packetByteSize}, \texttt{interArrivalTime}, destinos, etc.]}
-
-\guia{%
-  Incluya una tabla resumen de la configuración por escenario (Caso~1, Caso~2,
-  comparación). Indique tiempo de simulación, semilla (\texttt{seed-set}), tasa
-  de generación y tamaño de paquete. Esto permite reproducir sus experimentos.
-}
+Todos los enlaces son full-duplex, con capacidad de 1~Mbps y retardo de propagación de 100~$\mu$s. La capa de aplicación genera paquetes de 125000 bytes con tiempos entre llegadas exponenciales. En el \textbf{Caso 1}, solo los nodos 0 y 2 actúan como fuentes, ambos con destino en el nodo 5 y una tasa media de 1 paquete por segundo (\texttt{exponential(1)}). En el \textbf{Caso 2}, todos los nodos excepto el 5 (es decir, los nodos 0,1,2,3,4,6,7) generan tráfico hacia el nodo 5, y se varía el valor de \texttt{interArrivalTime} en el rango de 0.5 a 8 segundos (específicamente: 0.5, 1, 2, 4, 6, 8) para estudiar la estabilidad. La Tabla~\ref{tab:config} resume los parámetros empleados.
 
 \begin{table}[!ht]
   \centering
-  \caption{Configuración experimental por escenario (plantilla).}
+  \caption{Configuración experimental por escenario.}
   \label{tab:config}
   \coltablesetup
   \resizebox{\columnwidth}{!}{%
@@ -161,63 +153,29 @@ como \texttt{packetByteSize}, \texttt{interArrivalTime}, destinos, etc.]}
     \midrule
     Fuentes activas & \texttt{n[0]}, \texttt{n[2]} & 7 $\to$ \texttt{n[5]} & 1 y 2 \\
     Destino & \texttt{n[5]} & \texttt{n[5]} & idem \\
-    \texttt{packetByteSize} & \textit{[val.]} & \textit{[val.]} & \textit{[val.]} \\
-    \texttt{interArrivalTime} & \textit{[val.]} & \textit{[rango]} & \textit{[val.]} \\
-    T. simulación (s) & \textit{[val.]} & \textit{[val.]} & \textit{[val.]} \\
-    Semilla & \textit{[val.]} & \textit{[val.]} & \textit{[val.]} \\
+    \texttt{packetByteSize} & 125000 bytes & 125000 bytes & 125000 bytes \\
+    \texttt{interArrivalTime} & \texttt{exponential(1)} & \texttt{exponential(0.5 a 8)} & -- \\
+    T. simulación (s) & 200 & 200 & 200 \\
+    Semilla & 1 & 1 & 1 \\
     \bottomrule
   \end{tabular}%
   }
 \end{table}
 
-\begin{figure}[!t]
-  \centering
-  % Opción A: figura generada por ustedes (descomente y ajuste la ruta)
-  % \includegraphics[width=\linewidth]{figuras/topologia-anillo.pdf}
-  %
-  % Opción B: placeholder vectorial mientras no tengan la figura final
-  \begin{tikzpicture}[
-    ring node/.style={
-      circle, draw=gray!70!black, thick, fill=blue!5,
-      minimum size=7mm, inner sep=0pt,
-      font=\scriptsize\bfseries
-    },
-    fwd link/.style={
-      ->, >=Stealth, thick, draw=gray!55!black,
-      shorten >=1.8mm, shorten <=1.8mm
-    },
-  ]
-    \def\radius{1.45}
-    % Nodos equiespaciados sobre un círculo (0 arriba, sentido antihorario)
-    \foreach \i in {0,1,2,3,4,5,6,7} {
-      \pgfmathsetmacro{\nodeangle}{90 + 45*\i}
-      \node[ring node] (n\i) at (\nodeangle:\radius) {\i};
-    }
-    % Círculo guía (opcional, refuerza la topología en anillo)
-    \draw[gray!30, dashed, line width=0.4pt] (0,0) circle (\radius);
-    % Enlaces dirigidos entre vecinos consecutivos
-    \foreach \i/\j in {0/1,1/2,2/3,3/4,4/5,5/6,6/7,7/0} {
-      \draw[fwd link] (n\i) -- (n\j);
-      \draw[fwd link] (n\j) -- (n\i);
-    }
-  \end{tikzpicture}
-  \caption{Topología en anillo de 8 nodos (ejemplo). Reemplace por su figura
-  exportada desde OMNeT++ o por un diagrama propio.}
-  \label{fig:topologia}
-\end{figure}
-
 \subsection{Métricas registradas}
+Para evaluar el rendimiento del sistema de enrutamiento se instrumentaron las siguientes métricas en los módulos correspondientes:
+\begin{itemize}
+    \item \textbf{Demora extremo a extremo (s)}: medida en la capa de aplicación del nodo destino, calculando la diferencia entre el tiempo de recepción y el de creación del paquete.
+    \item \textbf{Cantidad de saltos por paquete}: se incrementa un contador en la capa de red de cada nodo que reenvía el paquete; el valor final se registra en la aplicación destino.
+    \item \textbf{Ocupación de buffer (paquetes)}: se registra la longitud instantánea de la cola en cada capa de enlace cada vez que se encola o desencola un paquete.
+    \item \textbf{Utilización del enlace (\%)}: se acumula el tiempo total de transmisión de paquetes en cada interfaz y se divide por el tiempo total de simulación.
+\end{itemize}
 
-\guia{%
-  Liste \textbf{todas} las estadísticas que instrumentaron en el modelo:
-  demora extremo a extremo, saltos por paquete, ocupación de buffers, tasa de
-  utilización de enlaces, paquetes descartados, etc. Explique \emph{cómo} se
-  midió cada métrica (módulo, vector, escalar, intervalo de muestreo).
-}
+La Tabla~\ref{tab:metricas} resume las métricas y sus módulos.
 
 \begin{table}[!ht]
   \centering
-  \caption{Métricas instrumentadas en el simulador (ejemplo de formato).}
+  \caption{Métricas instrumentadas en el simulador.}
   \label{tab:metricas}
   \coltablesetup
   \resizebox{\columnwidth}{!}{%
@@ -225,11 +183,11 @@ como \texttt{packetByteSize}, \texttt{interArrivalTime}, destinos, etc.]}
     \toprule
     \textbf{Métrica} & \textbf{Módulo} & \textbf{Unid.} \\
     \midrule
-    Demora E2E          & \textit{[compl.]} & s \\
-    Saltos / paquete    & \textit{[compl.]} & adim. \\
-    Ocupación buffer    & \textit{[compl.]} & pkts \\
-    Utilización enlace  & \textit{[compl.]} & \% \\
-  \bottomrule
+    Demora E2E & \texttt{app} & s \\
+    Saltos / paquete & \texttt{app} & adim. \\
+    Ocupación buffer & \texttt{lnk} & pkts \\
+    Utilización enlace & \texttt{lnk} & \% \\
+    \bottomrule
   \end{tabular}%
   }
 \end{table}
