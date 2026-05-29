@@ -62,11 +62,11 @@ void Lnk::handleMessage(cMessage *msg) {
             // Buffer
             bufferSizeVector.record(buffer.getLength());
             bufferLengthStats.collect(buffer.getLength());
-            // Tiempo
-            totalServiceTime += serviceTime;
             // send
             send(pkt, "toOut$o");
             serviceTime = pkt->getDuration();
+            // Tiempo
+            totalServiceTime += serviceTime;
             scheduleAt(simTime() + serviceTime, endServiceEvent);
         }
     } else { // msg is a packet

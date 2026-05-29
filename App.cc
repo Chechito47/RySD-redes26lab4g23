@@ -18,6 +18,10 @@ private:
     // Metricas de hopCount
     cStdDev hopCountStats;
     cOutVector hopCountVector;
+
+    // Paquetes
+    long packetsSent;
+    long packetsReceived;
 public:
     App();
     virtual ~App();
@@ -52,6 +56,10 @@ void App::initialize() {
     // Estadisticas de saltos por paquete
     hopCountStats.setName("HopCountStats");
     hopCountVector.setName("HopCount");
+
+    // Paquetes
+    packetsSent = 0;
+    packetsReceived = 0;
 }
 
 void App::finish() {
@@ -62,6 +70,9 @@ void App::finish() {
     recordScalar("Average hop count", hopCountStats.getMean());
     recordScalar("Max hop count", hopCountStats.getMax());
     recordScalar("Hop count standard deviation", hopCountStats.getStddev());
+
+    recordScalar("Number of packets sent", packetsSent);
+    recordScalar("Number of packets received", packetsReceived);
 }
 
 void App::handleMessage(cMessage *msg) {
@@ -78,6 +89,7 @@ void App::handleMessage(cMessage *msg) {
 
         // send to net layer
         send(pkt, "toNet$o");
+        packetsSent++;
 
         // compute the new departure time and schedule next sendMsgEvent
         simtime_t departureTime = simTime() + par("interArrivalTime");
