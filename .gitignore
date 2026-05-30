@@ -27,3 +27,13 @@ caso2_con_control.csv
 *vscode/
 metricas.csv
 
+# Archivos temporales generados por LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk

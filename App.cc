@@ -19,6 +19,12 @@ private:
     cStdDev hopCountStats;
     cOutVector hopCountVector;
 
+    // Metricas separadas para el Caso 1
+    cStdDev delayStats_0;
+    cStdDev delayStats_2;
+    cStdDev hopCountStats_0;
+    cStdDev hopCountStats_2;
+
     // Paquetes
     long packetsSent;
     long packetsReceived;
@@ -57,6 +63,11 @@ void App::initialize() {
     hopCountStats.setName("HopCountStats");
     hopCountVector.setName("HopCount");
 
+    delayStats_0.setName("Delay_Src0");
+    delayStats_2.setName("Delay_Src2");
+    hopCountStats_0.setName("HopCount_Src0");
+    hopCountStats_2.setName("HopCount_Src2");
+
     // Paquetes
     packetsSent = 0;
     packetsReceived = 0;
@@ -73,6 +84,15 @@ void App::finish() {
 
     recordScalar("Number of packets sent", packetsSent);
     recordScalar("Number of packets received", packetsReceived);
+
+    if (delayStats_0.getCount() > 0) {
+        recordScalar("Average delay Src 0", delayStats_0.getMean());
+        recordScalar("Average hops Src 0", hopCountStats_0.getMean());
+    }
+    if (delayStats_2.getCount() > 0) {
+        recordScalar("Average delay Src 2", delayStats_2.getMean());
+        recordScalar("Average hops Src 2", hopCountStats_2.getMean());
+    }
 }
 
 void App::handleMessage(cMessage *msg) {
@@ -110,6 +130,15 @@ void App::handleMessage(cMessage *msg) {
         int hops = pkt->getHopCount();
         hopCountStats.collect(hops);
         hopCountVector.record(hops);
+
+        int src = pkt->getSource();
+        if (src == 0) {
+            delayStats_0.collect(delay);
+            hopCountStats_0.collect(hops);
+        } else if (src == 2) {
+            delayStats_2.collect(delay);
+            hopCountStats_2.collect(hops);
+        }
 
         // delete msg
         delete (msg);

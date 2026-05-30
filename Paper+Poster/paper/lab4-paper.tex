@@ -199,37 +199,31 @@ La Tabla~\ref{tab:metricas} resume las métricas y sus módulos.
 \section{Tarea de análisis: evaluación del kickstarter}
 \label{sec:analisis}
 
-\guia{%
-  Esta sección responde la \textbf{Tarea de Análisis} del enunciado. Presente
-  los Casos~1 y~2 por separado. Cada caso debe incluir: (i)~configuración
-  experimental, (ii)~tabla o gráfico con resultados, (iii)~interpretación
-  basada en datos y (iv)~respuesta explícita a las preguntas del enunciado.
-  \textbf{No} afirme mejoras o saturación sin mostrar números, curvas o
-  barras comparativas.
-}
+En esta sección se presenta la evaluación de rendimiento del algoritmo 
+de enrutamiento base (kickstarter) implementado en la topología de anillo. 
+Para diagnosticar sus limitaciones, el análisis se divide en dos escenarios 
+de simulación. El Caso 1 evalúa el comportamiento y la distribución de 
+carga de la red ante fuentes específicas (\texttt{node[0]} y \texttt{node[2]} hacia \texttt{node[5]}). Dado que el algoritmo reenvía siempre los paquetes por la interfaz \texttt{toLnk[0]}, el tráfico se ve forzado a viajar invariablemente en sentido antihorario (\texttt{2} $\to$ \texttt{1} $\to$ \texttt{0} $\dots$ $\to$ \texttt{5}), adoptando rutas que no siempre son óptimas.
+Por su parte, el Caso 2 busca determinar el punto de saturación de los 
+buffers frente a un incremento generalizado y sostenido del tráfico. 
+Las métricas obtenidas en ambos experimentos servirán como línea base 
+empírica para justificar el diseño de un algoritmo de enrutamiento mejorado.
 
 \subsection{Caso 1: tráfico configurado (\texttt{node[0]} y \texttt{node[2]} $\rightarrow$ \texttt{node[5]})}
+\label{sec:baseline}
 
-\guia{%
-  Ejecute el modelo con la configuración por defecto del kickstarter. Reporte
-  demoras, saltos, uso de buffers y enlaces. Responda: ¿qué métricas obtienen?
-  ¿cómo se usan los recursos? ¿se puede mejorar y por qué?
-}
+En esta simulación, evaluamos el desempeño de la red bajo un escenario asimétrico, donde solo \texttt{node[0]} y \texttt{node[2]} generan tráfico hacia \texttt{node[5]}. Según los resultados resumidos en la Tabla~\ref{tab:caso1}, el algoritmo baseline obtiene una demora media de 53.25\,s, lo cual evidencia una congestión importante. En cuanto al uso de recursos, se observó que la ocupación máxima a nivel global alcanzó los 199 paquetes y la utilización máxima de enlace llegó al 98\%, demostrando que prácticamente el enlace en la dirección de transmisión elegida por el enrutamiento estático está saturado.
 
-\textit{[Análisis narrativo apoyado en Tabla~\ref{tab:caso1} y
-Fig.~\ref{fig:caso1-demora}. Describa si un sentido del anillo concentra tráfico,
-si hay nodos intermedios más cargados y si las colas crecen de forma sostenida.]}
+Al analizar el tráfico de forma individual (ver Fig.~\ref{fig:caso1-demora}), se hace evidente el problema estructural del algoritmo baseline: el flujo de tráfico estático hace que el \texttt{node[0]} absorba tanto los paquetes generados por él mismo, como los que arriban desde y a través del \texttt{node[2]} (en su camino hacia el \texttt{node[5]}). Esto transforma al \texttt{node[0]} e indirectamente sus puertos \texttt{lnk[0]} en un cuello de botella crítico (con un buffer que llega al tope de 199 paquetes y en 98\% utilización de enlace), mientras que los recursos propios iniciales de \texttt{node[2]} tienen menor presión.
 
-\guia{%
-  Ejemplo de afirmación bien respaldada: ``La demora media fue 0.82\,s
-  (Tabla~\ref{tab:caso1}), un 35\% mayor en el flujo desde \texttt{node[0]} por
-  la mayor distancia en saltos (Fig.~\ref{fig:caso1-demora}).'' Evite frases
-  vagas como ``la red anduvo bien'' sin citar datos.
-}
+Como consecuencia directa de esta congestión, surge una penalización generalizada e ineficiente en las demoras. Mientras que el tráfico de la Fuente 2 requiere 5 saltos para llegar a destino, la Fuente 0 solo requiere 3. Sin embargo, las demoras promedio son extremadamente similares (en torno a los 53\textendash 54\,s para ambas). Esto demuestra que el tiempo extra de transmisión por dar más saltos termina siendo insignificante comparado con el masivo retraso que ambos flujos sufren (queueing delay) al quedar atascados en la misma cola del nodo saturado (\texttt{node[0]}), haciendo que los paquetes tarden prácticamente lo mismo en llegar al destino sin importar su punto de partida.
+
+Este cuello de botella y las demoras asociadas subrayan la necesidad de implementar esquemas de ruteo basados en métricas de distancia que balanceen la carga de red por ambos sentidos del anillo (para ir por el camino más corto).
+
 
 \begin{table}[!ht]
   \centering
-  \caption{Resultados del Caso~1 (baseline kickstarter). Reemplace los valores.}
+  \caption{Resultados globales del Caso~1 (baseline).}
   \label{tab:caso1}
   \coltablesetup
   \resizebox{\columnwidth}{!}{%
@@ -237,10 +231,10 @@ si hay nodos intermedios más cargados y si las colas crecen de forma sostenida.
     \toprule
     \textbf{Métrica} & \textbf{Prom.} & \textbf{Máx.} & \textbf{Desv.} \\
     \midrule
-    Demora (s)        & 0.00 & 0.00 & 0.00 \\
-    Saltos            & 0.0  & 0    & 0.0  \\
-    Ocupación buffer  & 0.0  & 0    & 0.0  \\
-    Util. enlace (\%) & 0.0  & 0.0  & 0.0  \\
+    Demora (s)        & 53.25 & -- & -- \\
+    Saltos            & 3.8  & 5    & 0.98  \\
+    Ocupación buffer  & 21.8  & 199    & 43.4  \\
+    Util. enlace (\%) & 29.5  & 98.0  & 45.2  \\
     \bottomrule
   \end{tabular}%
   }
@@ -259,16 +253,15 @@ si hay nodos intermedios más cargados y si las colas crecen de forma sostenida.
       xtick=data,
       x tick label style={font=\scriptsize, rotate=25, anchor=east},
       ylabel={Valor norm.},
-      title={\scriptsize Ejemplo: comparación de métricas (Caso 1)},
+      title={\scriptsize Comparación de métricas (Caso 1)},
       legend style={font=\scriptsize, at={(0.5,1.05)}, anchor=south, legend columns=-1},
     ]
-      \addplot coordinates {(Demora,0.42) (Saltos,0.55) (Buffer,0.31) (Enlace,0.48)};
-      \addplot coordinates {(Demora,0.35) (Saltos,0.50) (Buffer,0.28) (Enlace,0.40)};
+      \addplot coordinates {(Demora,0.96) (Saltos,0.60) (Buffer,1.00) (Enlace,1.00)};
+      \addplot coordinates {(Demora,1.00) (Saltos,1.00) (Buffer,0.11) (Enlace,0.92)};
       \legend{Fuente 0, Fuente 2}
     \end{axis}
   \end{tikzpicture}
-  \caption{Ejemplo de gráfico de barras. Exporte datos desde OMNeT++ (Scalar
-  Export / Python / R) y genere gráficos similares con valores reales.}
+  \caption{Métricas normalizadas para el Caso 1 (baseline). La métrica Buffer (máximo) y Enlace correlacionan los nodos \texttt{node[0]} para Fuente 0 y \texttt{node[2]} para Fuente 2.}
   \label{fig:caso1-demora}
 \end{figure}
 
