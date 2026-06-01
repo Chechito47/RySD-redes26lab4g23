@@ -4,7 +4,7 @@
 *.out
 *.aux
 *.log
-*.pdf
+
 
 # Ejecutable generado (suele tomar el nombre de la carpeta u otro por defecto)
 redes26lab4g23
