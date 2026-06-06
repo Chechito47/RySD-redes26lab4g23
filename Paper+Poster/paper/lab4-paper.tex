@@ -474,59 +474,204 @@ teórico $\rho = 7/\mathrm{IAT} < 1$, que exige IAT\,$> 7$\,s.}
 \section{Diseño del algoritmo de enrutamiento propuesto}
 \label{sec:diseno}
 
-\guia{%
-  Corresponde a la \textbf{Tarea de Diseño}. Explique \textbf{qué información}
-  usa cada nodo, \textbf{cómo} la obtiene (p.\,ej.\ paquetes hello/echo, tablas
-  locales) y \textbf{cómo} decide la interfaz de salida. Describa decisiones de
-  diseño, limitaciones y por qué su enfoque supera al baseline. Puede usar
-  pseudocódigo, diagrama de flujo o tabla de reglas. Recuerde: no use
-  \texttt{cTopology} ni iteradores de \texttt{cGate} para descubrir vecinos.
-}
+El algoritmo diseñado reemplaza el envío por la misma interfaz \texttt{lnk[0]} por una
+decisión basada en la distancia mínima en el anillo. Para ello, cada nodo necesita
+conocer la cantidad total de nodos \(N\) y su propio identificador. Esta información
+se obtiene sin usar \texttt{cTopology} ni iteradores de \texttt{cGate}, únicamente
+mediante el intercambio de dos tipos de paquetes de control: \texttt{hello} y
+\texttt{echo}. Una vez que todos los nodos conocen \(N\), el reenvío de cada paquete
+de datos se decide calculando la cantidad de saltos en ambos sentidos y eligiendo la
+interfaz que da el camino más corto. El diseño es simple, autónomo y se adapta a
+cualquier tamaño de anillo, emulando el comportamiento de protocolos reales de
+descubrimiento de vecinos.
 
 \subsection{Información disponible y estructuras de datos}
 
-\textit{[Describa tablas de rutas, métricas locales, mensajes de control, etc.]}
-
-\subsection{Reglas de decisión}
-
-\guia{%
-  Presente el algoritmo en tres niveles: (1)~descripción en prosa, (2)~tabla de
-  reglas o pseudocódigo, (3)~ejemplo numérico con un paquete concreto que atraviesa
-  varios nodos. Si intercambian mensajes de control, muestre el formato del
-  paquete hello/echo en una tabla.
-}
-
-\textit{[Detalle el algoritmo. Ejemplo de pseudocódigo:]}
+Cada nodo mantiene internamente dos variables globales:
+\begin{itemize}
+    \item \texttt{totalNodes}: entero que almacena el tamaño del anillo (valor inicial 0).
+    \item \texttt{haveTotalNodes}: booleano que indica si un nodo ya se recibió el valor de \texttt{totalNodes}.
+\end{itemize}
+Además, cada nodo conoce su propio índice (\texttt{nodeId}), obtenido al inicio de la
+simulación mediante \texttt{getParentModule()->getIndex()}. No se utilizan tablas
+de ruteo explícitas porque la decisión de interfaz se calcula sobre la marcha;
+sin embargo, a modo ilustrativo, la Tabla~\ref{tab:rutasfake} muestra cómo se vería la
+tabla local de un nodo (por ejemplo, el nodo 4) en un anillo de 8 nodos con nuestro
+algoritmo.
 
 \begin{table}[!ht]
   \centering
-  \caption{Ejemplo de tabla de rutas locales en un nodo (complete con su diseño).}
-  \label{tab:rutas}
+  \caption{Ejemplo de tabla de rutas locales en el nodo 4 para un anillo de 8 nodos.}
+  \label{tab:rutasfake}
   \coltablesetup
   \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}clc@{}}
     \toprule
     \textbf{Destino} & \textbf{Interfaz} & \textbf{Saltos} \\
     \midrule
-    \texttt{node[5]} & \texttt{lnk[1]} & 2 \\
-    \texttt{node[0]} & \texttt{lnk[0]} & 3 \\
-    \texttt{node[2]} & \texttt{lnk[0]} & 1 \\
-    \textit{[...]}   & \textit{[...]}  & \textit{[...]} \\
+    \texttt{node[5]} & \texttt{lnk[1]} & 1 \\
+    \texttt{node[0]} & \texttt{lnk[1]} & 2 \\
+    \texttt{node[2]} & \texttt{lnk[1]} & 2 \\
+    \texttt{node[6]} & \texttt{lnk[0]} & 2 \\
+    \texttt{node[7]} & \texttt{lnk[0]} & 1 \\
     \bottomrule
   \end{tabular}%
   }
 \end{table}
 
+Los mensajes de control utilizados tienen los siguientes campos:
+
+\begin{itemize}
+    \item \textbf{Mensaje \texttt{hello} (tipo 1)}: se usa para descubrir \(N\).
+        \begin{itemize}
+            \item \texttt{origin}: nodo que inició el descubrimiento.
+            \item \texttt{hopCount}: contador de saltos.
+            \item \texttt{packetType} = 1.
+        \end{itemize}
+    \item \textbf{Mensaje \texttt{echo} (tipo 2)}: propaga el valor de \(N\).
+        \begin{itemize}
+            \item \texttt{totalNodes}: tamaño del anillo.
+            \item \texttt{packetType} = 2.
+        \end{itemize}
+\end{itemize}
+
+Los paquetes de datos (tipo 0) llevan \texttt{source}, \texttt{destination} y
+\texttt{hopCount} (incrementado en cada reenvío).
+
+\subsection{Reglas de decisión}
+
+El algoritmo se divide en dos fases: descubrimiento y enrutamiento. A continuación
+se describen en prosa, se proporciona el pseudocódigo y un ejemplo numérico.
+
+\subsubsection*{Descripción en prosa}
+
+\textbf{Fase 1 – Descubrimiento de \(N\):}
+\begin{enumerate}
+    \item El nodo 0 (elegido arbitrariamente) envía un paquete \texttt{hello} con
+        \texttt{hopCount=0} por su interfaz \texttt{lnk[0]}.
+    \item Cada nodo intermedio que recibe el \texttt{hello} incrementa
+        \texttt{hopCount} y lo reenvía por la misma interfaz \texttt{lnk[0]}.
+    \item Cuando el \texttt{hello} regresa al nodo 0, el valor de
+        \texttt{hopCount} es el número de saltos (cantidad de nodos intermedios).
+        El nodo 0 deduce entonces \texttt{totalNodes = hopCount + 1} y lo almacena.
+    \item El nodo 0 construye un paquete \texttt{echo} con \texttt{totalNodes} y lo
+        envía por todas sus interfaces conectadas (inundación).
+    \item Cada nodo que recibe un \texttt{echo} por primera vez guarda el valor de
+        \texttt{totalNodes}, lo reenvía por todas las demás interfaces (excepto por
+        la que llegó) y activa la fase de enrutamiento. Los \texttt{echo} duplicados
+        se descartan.
+\end{enumerate}
+
+\textbf{Fase 2 – Enrutamiento de paquetes de datos:}
+\begin{enumerate}
+    \item Al recibir un paquete de datos (tipo 0) que no está destinado al nodo local,
+        se incrementa su campo \texttt{hopCount}.
+    \item Si el nodo aún no conoce \texttt{totalNodes} (fallback), reenvía el paquete
+        por \texttt{lnk[0]} (comportamiento baseline).
+    \item Si ya conoce \texttt{totalNodes}, calcula las distancias en ambos sentidos:
+        \[
+        \begin{aligned}
+        \mathrm{horario}
+            &= (\mathrm{destino} - \mathrm{nodeId} + \mathrm{totalNodes})
+            \bmod \mathrm{totalNodes} \\
+        \mathrm{antihorario}
+            &= (\mathrm{nodeId} - \mathrm{destino} + \mathrm{totalNodes})
+            \bmod \mathrm{totalNodes}
+        \end{aligned}
+        \]
+    \item Elige la interfaz según la regla:
+        \begin{itemize}
+            \item Si \(\text{horario} \le \text{antihorario}\), envía por \texttt{lnk[1]} (sentido horario).
+            \item En caso contrario, envía por \texttt{lnk[0]} (sentido antihorario).
+        \end{itemize}
+\end{enumerate}
+
+\subsubsection*{Pseudocódigo}
+
 \begin{small}
 \begin{verbatim}
-al recibir paquete p en interfaz i:
-  si dest(p) == id_local:
-    entregar a capa app
-  sino:
-    j <- elegir_interfaz(p, tablas_locales)
-    reenviar p por interfaz j
+al recibir paquete p:
+  si p.tipo == 1:            # hello
+    si p.origen == mi_id:
+      totalNodes = p.hopCount + 1
+      haveTotalNodes = true
+      para cada interfaz i conectada:
+        enviar echo(totalNodes) por i
+    sino:
+      p.hopCount = p.hopCount + 1
+      reenviar p por lnk[0]
+  si p.tipo == 2:            # echo
+    si not haveTotalNodes:
+      totalNodes = p.totalNodes
+      haveTotalNodes = true
+      para cada interfaz i conectada excepto la de llegada:
+        reenviar copia de p por i
+  si p.tipo == 0:            # data
+    si p.destino == mi_id:
+      entregar a app
+    sino:
+      p.hopCount = p.hopCount + 1
+      si not haveTotalNodes:
+        reenviar por lnk[0]   # fallback
+      sino:
+        horario = (p.destino - mi_id + totalNodes) % totalNodes
+        antihorario = (mi_id - p.destino + totalNodes) % totalNodes
+        si horario <= antihorario:
+          reenviar por lnk[1]   # horario
+        sino:
+          reenviar por lnk[0]   # antihorario
 \end{verbatim}
 \end{small}
+
+\subsubsection*{Ejemplo numérico}
+
+Considere un anillo de 8 nodos (\(N=8\)). El nodo 0 recibe un paquete con
+destino al nodo 5. Calcula:
+
+\begin{itemize}
+    \item \(\mathrm{horario} = (5 - 0 + 8) \bmod 8 = 5\)
+
+    \item \(\mathrm{antihorario} = (0 - 5 + 8) \bmod 8 = 3\)
+\end{itemize}
+
+Dado que \(\mathrm{horario} > \mathrm{antihorario}\), elige la interfaz
+\texttt{lnk[0]} (sentido antihorario). El camino resultante es
+\(0 \rightarrow 7 \rightarrow 6 \rightarrow 5\), que requiere 3 saltos
+(el mínimo posible).
+
+Si el mismo paquete se originara en el nodo 2 con destino 5:
+
+\begin{itemize}
+    \item \(\mathrm{horario} = (5 - 2 + 8) \bmod 8 = 3\)
+
+    \item \(\mathrm{antihorario} = (2 - 5 + 8) \bmod 8 = 5\)
+\end{itemize}
+
+Con \(\mathrm{horario} \leq \mathrm{antihorario}\), se envía por
+\texttt{lnk[1]} (sentido horario), obteniendo también 3 saltos
+(\(2 \rightarrow 3 \rightarrow 4 \rightarrow 5\)).
+
+En ambos casos el algoritmo supera al baseline, que habría enviado siempre
+por \texttt{lnk[0]} produciendo 5 saltos desde el nodo 2.
+
+\subsubsection*{Limitaciones y ventajas sobre el baseline}
+
+El diseño presentado asume una topología de anillo estática (no detecta caídas de
+nodos, cualquier nodo que se caiga provocaria que la red deje de funcionar) y 
+depende de que el nodo 0 esté activo para iniciar el descubrimiento. No
+obstante, estas limitaciones son aceptables para el alcance del laboratorio y no
+afectan la comparación de rendimiento. Respecto al algoritmo original, las ventajas
+son claras:
+\begin{itemize}
+    \item Elimina la configuración manual de la cantidad de nodos; la descubre
+        autónomamente.
+    \item Reduce la cantidad de saltos y, en consecuencia,
+        las demoras.
+    \item Balancea la carga al utilizar ambos sentidos del anillo según la distancia
+        mínima.
+    \item Cumple estrictamente con la restricción de no usar \texttt{cTopology} ni
+        iteradores de \texttt{cGate}.
+\end{itemize}
 
 \section{Evaluación comparativa}
 \label{sec:evaluacion}
