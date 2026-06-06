@@ -101,6 +101,7 @@ void App::handleMessage(cMessage *msg) {
     if (msg == sendMsgEvent) {
         // create new packet
         Packet *pkt = new Packet("packet",this->getParentModule()->getIndex());
+        pkt->setPacketType(0);
         pkt->setByteLength(par("packetByteSize"));
         pkt->setSource(this->getParentModule()->getIndex());
         pkt->setDestination(par("destination"));
