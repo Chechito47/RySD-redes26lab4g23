@@ -688,46 +688,192 @@ son claras:
 \section{Evaluación comparativa}
 \label{sec:evaluacion}
 
-\guia{%
-  Compare su algoritmo contra el kickstarter en los Casos~1 y~2 (y en otros
-  escenarios si lo desea). Use tablas side-by-side, gráficos de barras
-  agrupados o boxplots de demora. Cuantifique la mejora (\%, factor, absoluto).
-  Responda: ¿cuánto mejoran las métricas? ¿por qué? ¿hubo bucles de
-  enrutamiento?¿Qué pasaría si la cantidad de nodos es mucho mayor y como 
-  funcionaria con respecto al algoritmo propuesto por la cátedra?¿Qué sucedería
-  si se cae un nodo serían tolerantes a esa falla los algoritmos? Si ajustó 
-  parámetros según la nota al pie~4 del enunciado, indíquelo claramente en 
-  la metodología.
-}
+Esta sección compara el rendimiento del algoritmo baseline (kickstarter) con
+el algoritmo propuesto en los escenarios del Caso~1 y Caso~2. Todos los
+experimentos se ejecutaron bajo las mismas condiciones de tráfico, semilla
+(\texttt{seed-set\,=\,1}) y tiempo de simulación (200\,s) descritos en la
+Sección~\ref{sec:modelo}.
 
 \subsection{Metodología de comparación}
 
-\textit{[Describa bajo qué condiciones ejecutó cada algoritmo, si usó los mismos
-escenarios, semillas y parámetros, y cómo calculó promedios o intervalos. Ejemplo:
-``Para cada \texttt{interArrivalTime} del Caso~2 se ejecutaron 5 repeticiones con
-semillas 1--5; reportamos la media y el máximo de demora extremo a extremo.'']}
+Para el Caso~1 se dispone de resultados del algoritmo propuesto y del
+baseline (reportado en la Sección~\ref{sec:analisis}). Para el Caso~2 se
+ejecutaron ambos algoritmos con los seis valores de \texttt{interArrivalTime}
+(0.5, 1, 2, 4, 6 y 8\,s), misma semilla y mismos parámetros. No se
+ajustaron los parámetros de tamaño de paquete ni de tasa de generación
+respecto al baseline (125\,000 bytes, \texttt{exponential(IAT)}). Se
+reportan la media y el máximo de cada métrica. La mejora relativa se calcula
+como $(\mathrm{baseline} - \mathrm{propuesto})/\mathrm{baseline}\times100$
+para métricas donde menor es mejor.
 
 \subsection{Resultados cuantitativos}
 
-\begin{table*}[!t]
+\subsubsection*{Caso 1}
+
+Con el nuevo algoritmo, \texttt{node[0]} elige el camino antihorario hacia
+\texttt{node[5]} (3 saltos: $0{\to}7{\to}6{\to}5$) y \texttt{node[2]} el
+camino horario (3 saltos: $2{\to}3{\to}4{\to}5$). Ambos flujos quedan
+\textbf{completamente separados}: no comparten ningún enlace intermedio.
+Esto elimina la congestión que en el baseline concentraba todo el tráfico
+en \texttt{node[0].lnk[0]}.
+
+La Tabla~\ref{tab:comparacion-c1} resume los resultados.
+
+\begin{table}[!ht]
   \centering
-  \caption{Comparación baseline vs.\ algoritmo propuesto (complete con sus datos).}
-  \label{tab:comparacion}
+  \caption{Comparación Caso~1: baseline vs.\ algoritmo propuesto.}
+  \label{tab:comparacion-c1}
+  \coltablesetup
+  \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}lrrrr@{}}
     \toprule
-    \multirow{2}{*}{\textbf{Escenario / Métrica}} &
-    \multicolumn{2}{c}{\textbf{Kickstarter}} &
+    \multirow{2}{*}{\textbf{Métrica}} &
+    \multicolumn{2}{c}{\textbf{Baseline}} &
     \multicolumn{2}{c}{\textbf{Propuesto}} \\
     \cmidrule(lr){2-3}\cmidrule(lr){4-5}
-    & \textbf{Media} & \textbf{Máx.} & \textbf{Media} & \textbf{Máx.} \\
+    & \textbf{Valor} & \textbf{Mej.\,(\%)} & \textbf{Valor} & \\
     \midrule
-    Caso 1 — Demora (s)     & 0.00 & 0.00 & 0.00 & 0.00 \\
-    Caso 1 — Saltos         & 0.0  & 0    & 0.0  & 0    \\
-    Caso 2 — Demora (s)     & 0.00 & 0.00 & 0.00 & 0.00 \\
-    Caso 2 — Pérdidas       & 0    & --   & 0    & --   \\
+    Demora media (s)     & 53.25 & & 13.61 & $-74.4\%$ \\
+    Saltos promedio      &  3.80 & &  3.00 & $-21.1\%$ \\
+    Saltos máximos       &  5    & &  3    & $-40.0\%$ \\
+    Desv.\ est.\ saltos  &  0.98 & &  0.00 & $-100\%$  \\
+    Buffer máx.\ global  & 199   & &  27   & $-86.4\%$ \\
+    Util.\ máx.\ enlace  & 98.0\% & & 97.5\% & --- \\
+    \bottomrule
+  \end{tabular}%
+  }
+\end{table}
+
+La demora se reduce un \textbf{74.4\%} (de 53.25\,s a 13.61\,s) y el
+buffer máximo cae un \textbf{86.4\%} (de 199 a 27 paquetes). La desviación
+estándar de saltos baja a cero, indicando que \textbf{todos los paquetes
+siguen exactamente 3 saltos} sin importar su fuente.
+
+Sin embargo, la utilización máxima de enlace permanece alta (97.5\%) porque
+cada flujo individual ya satura su propio enlace de salida: \texttt{node[0]}
+genera $\approx 1$\,pkt/s y su enlace \texttt{lnk[0]} tiene capacidad de
+exactamente $1$\,pkt/s ($\rho \approx 1$). Esto explica por qué el delay
+de la Fuente~0 (16.76\,s) es mayor que el de la Fuente~2 (10.20\,s): ambos
+tienen 3 saltos, pero \texttt{node[0].lnk[0]} opera con menor margen que
+\texttt{node[2].lnk[1]}.
+
+La Figura~\ref{fig:comparacion-c1} muestra la comparación normalizada por
+fuente.
+
+\begin{figure}[!t]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth,
+      height=4.4cm,
+      ybar,
+      bar width=7pt,
+      ymin=0, ymax=1.15,
+      symbolic x coords={Demora,Saltos,Buffer,Util.},
+      xtick=data,
+      x tick label style={font=\scriptsize},
+      ylabel={Valor norm.},
+      title={\scriptsize Caso~1: métricas normalizadas por fuente},
+      legend style={font=\scriptsize, at={(0.5,1.05)},
+                    anchor=south, legend columns=-1},
+    ]
+      % Baseline: Fuente0 y Fuente2 (normalizados sobre el máximo del baseline)
+      % Delay: src0=53.25 src2=53.25 (similares), hops: src0=3 src2=5
+      % Buffer: node[0]=199, node[2]=~22; Util: node[0]=98%, node[2]=92%
+      \addplot coordinates {
+        (Demora,1.00)(Saltos,0.60)(Buffer,1.00)(Util.,1.00)};
+      \addplot coordinates {
+        (Demora,1.00)(Saltos,1.00)(Buffer,0.11)(Util.,0.94)};
+      % Propuesto: Fuente0 y Fuente2
+      % Delay: src0=16.76/53.25=0.315, src2=10.20/53.25=0.192
+      % Hops: ambos 3 saltos → src0=0.60, src2=1.00 (sobre max 5)
+      % Buffer: node[0].lnk[0]=27/199=0.136, node[2].lnk[1]=21/199=0.105
+      % Util: node[0].lnk[0]=97.5/98=0.995, node[2].lnk[1]=90/98=0.918
+      \addplot coordinates {
+        (Demora,0.31)(Saltos,0.60)(Buffer,0.14)(Util.,1.00)};
+      \addplot coordinates {
+        (Demora,0.19)(Saltos,0.60)(Buffer,0.11)(Util.,0.92)};
+      \legend{BL Src0, BL Src2, Prop.\ Src0, Prop.\ Src2}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Métricas normalizadas del Caso~1 por fuente de origen.
+           Valores normalizados sobre el máximo del baseline.
+           La mejora en demora es notable; la utilización de enlace
+           permanece alta porque cada flujo satura su propio enlace.}
+  \label{fig:comparacion-c1}
+\end{figure}
+
+\subsubsection*{Caso 2}
+
+La Tabla~\ref{tab:comparacion-c2} presenta la comparación completa para
+todos los valores de \texttt{interArrivalTime}.
+
+\begin{table*}[!t]
+  \centering
+  \caption{Comparación Caso~2: baseline vs.\ algoritmo propuesto para
+           distintos \texttt{interArrivalTime}. BufMáx corresponde a
+           \texttt{node[6].lnk[0]} (cuello de botella del baseline) y
+           \texttt{node[4].lnk[1]} (cuello del propuesto).}
+  \label{tab:comparacion-c2}
+  \begin{tabular}{@{}rrrrrrrrr@{}}
+    \toprule
+    \multirow{2}{*}{\textbf{IAT (s)}} &
+    \multicolumn{2}{c}{\textbf{Demora media (s)}} &
+    \multirow{2}{*}{\textbf{Mej.\,(\%)}} &
+    \multicolumn{2}{c}{\textbf{BufMáx (pkts)}} &
+    \multicolumn{2}{c}{\textbf{R/E ratio}} &
+    \multirow{2}{*}{\textbf{¿Est.?}} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+    & \textbf{Base} & \textbf{Prop.} & &
+      \textbf{Base} & \textbf{Prop.} &
+      \textbf{Base} & \textbf{Prop.} & \\
+    \midrule
+    0.5 & 75.09 & 75.01 &  0.1\% & 421 & 421 & 0.071 & 0.141 & No \\
+    1   & 65.92 & 63.87 &  3.1\% & 218 & 218 & 0.140 & 0.280 & No \\
+    2   & 56.52 & 42.93 & 24.0\% & 102 &  99 & 0.274 & 0.544 & No \\
+    4   & 39.99 &  6.58 & 83.5\% &  50 &   8 & 0.536 & 0.951 & No/Borde \\
+    6   & 17.49 &  2.98 & 82.9\% &  25 &   3 & 0.836 & 0.996 & Sí \\
+    8   &  6.19 &  2.72 & 56.1\% &   4 &   3 & 0.970 & 0.988 & Sí \\
     \bottomrule
   \end{tabular}
 \end{table*}
+
+La Figura~\ref{fig:comparacion-delay-c2} muestra la evolución de la demora
+media con ambos algoritmos.
+
+\begin{figure}[!t]
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=\linewidth,
+      height=4.8cm,
+      xlabel={\texttt{interArrivalTime} (s)},
+      ylabel={Demora media (s)},
+      xmin=0, xmax=9, ymin=0, ymax=82,
+      grid=major,
+      xtick={0.5,1,2,4,6,8},
+      legend style={font=\scriptsize, at={(0.98,0.98)}, anchor=north east},
+    ]
+      \addplot[thick, red, mark=square*, mark size=2pt] coordinates {
+        (0.5,75.09)(1,65.92)(2,56.52)(4,39.99)(6,17.49)(8,6.19)
+      };
+      \addlegendentry{Baseline}
+      \addplot[thick, blue, mark=*, mark size=2pt] coordinates {
+        (0.5,75.01)(1,63.87)(2,42.93)(4,6.58)(6,2.98)(8,2.72)
+      };
+      \addlegendentry{Propuesto}
+      \addplot[thick, gray, dashed] coordinates {(7,0)(7,82)};
+      \addlegendentry{Umbral teórico BL}
+      \addplot[thick, blue!40, dashed] coordinates {(4,0)(4,82)};
+      \addlegendentry{Umbral emp.\ prop.}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Demora media E2E vs.\ \texttt{interArrivalTime} para ambos
+           algoritmos. El algoritmo propuesto alcanza la estabilidad
+           empíricamente a partir de IAT\,=\,6\,s frente a IAT\,=\,8\,s
+           del baseline.}
+  \label{fig:comparacion-delay-c2}
+\end{figure}
 
 \begin{figure}[!t]
   \centering
@@ -735,40 +881,105 @@ semillas 1--5; reportamos la media y el máximo de demora extremo a extremo.'']}
     \begin{axis}[
       width=\linewidth,
       height=4.5cm,
-      ybar,
-      bar width=10pt,
-      ymin=0,
-      symbolic x coords={Caso1-Demora,Caso1-Saltos,Caso2-Demora,Caso2-Buffer},
-      xtick=data,
-      x tick label style={font=\scriptsize, rotate=30, anchor=east},
-      ylabel={Valor},
-      legend style={font=\scriptsize, at={(0.5,1.02)}, anchor=south, legend columns=-1},
-      enlarge x limits=0.15,
+      xlabel={\texttt{interArrivalTime} (s)},
+      ylabel={Utilización enlace (\%)},
+      xmin=0, xmax=9, ymin=0, ymax=110,
+      grid=major,
+      xtick={0.5,1,2,4,6,8},
+      legend style={font=\scriptsize, at={(0.98,0.98)}, anchor=north east},
     ]
-      \addplot coordinates {
-        (Caso1-Demora,0.72) (Caso1-Saltos,4.0) (Caso2-Demora,1.85) (Caso2-Buffer,0.65)
+      \addplot[thick, red, mark=square*, mark size=2pt] coordinates {
+        (0.5,100.0)(1,100.0)(2,99.5)(4,98.0)(6,94.5)(8,82.5)
       };
-      \addplot coordinates {
-        (Caso1-Demora,0.41) (Caso1-Saltos,2.0) (Caso2-Demora,0.92) (Caso2-Buffer,0.28)
+      \addlegendentry{BL \texttt{node[6].lnk[0]} (7 flujos)}
+      \addplot[thick, blue, mark=*, mark size=2pt] coordinates {
+        (0.5,100.0)(1,100.0)(2,99.5)(4,95.0)(6,65.5)(8,49.0)
       };
-      \legend{Kickstarter, Propuesto}
+      \addlegendentry{Prop.\ \texttt{node[4].lnk[1]} (4 flujos)}
     \end{axis}
   \end{tikzpicture}
-  \caption{Ejemplo de barras agrupadas para comparar algoritmos. Todo
-  gráfico debe tener ejes etiquetados, unidades y leyenda.}
-  \label{fig:comparacion-barras}
+  \caption{Utilización del enlace cuello de botella en cada algoritmo.
+           El propuesto reduce la carga máxima de 7 a 4 flujos
+           concentrados, lo que adelanta el umbral de estabilidad.}
+  \label{fig:comparacion-util-c2}
 \end{figure}
 
 \subsection{Discusión de resultados}
 
-\guia{%
-  Interprete las tablas y figuras anteriores. Relacione mejoras con decisiones
-  concretas de su diseño (p.\,ej.\ balanceo de carga, ruta más corta). Mencione
-  mejoras posibles no implementadas por limitaciones de tiempo o alcance.
-}
+\subsubsection*{¿Cuánto mejoran las métricas y por qué?}
 
-\textit{[Discusión basada en evidencia. ¿Se observaron bucles? ¿En qué
-condiciones? ¿Cómo los detectó o evitó?]}
+Las mejoras son drásticas en el régimen de tráfico moderado. Con
+IAT\,=\,4\,s la demora cae un \textbf{83.5\%} (de 39.99\,s a 6.58\,s)
+y el buffer máximo se reduce de 50 a 8 paquetes. La causa es estructural:
+el baseline acumula \textbf{7 flujos} en un único enlace
+(\texttt{node[6].lnk[0]}), mientras que el algoritmo propuesto
+distribuye el tráfico simétricamente en ambas direcciones del anillo.
+El nuevo cuello de botella, \texttt{node[4].lnk[1]}, concentra solo
+\textbf{4 flujos} (los nodos 1, 2, 3 y 4 que van en sentido horario),
+lo que reduce la utilización máxima de 98\,\% a 49\,\% con IAT\,=\,8\,s
+(Fig.~\ref{fig:comparacion-util-c2}).
+
+Otro indicador clave es el ratio R/E: con IAT\,=\,4\,s el baseline
+entrega solo el 53.6\,\% de los paquetes generados, mientras que el
+algoritmo propuesto entrega el 95.1\,\%. La estabilidad práctica
+se alcanza a partir de \textbf{IAT\,=\,6\,s} en el nuevo algoritmo
+(R/E\,=\,0.996, buffer máx.\,=\,3), un umbral un 14\,\% menor que el
+del baseline (IAT\,=\,8\,s).
+
+El nuevo umbral teórico puede estimarse como:
+
+\begin{equation}
+  \rho_{\mathrm{prop}} = \frac{4}{\mathrm{IAT}} < 1
+  \quad \Rightarrow \quad \mathrm{IAT} > 4\,\mathrm{s}
+  \label{eq:umbral-nuevo}
+\end{equation}
+
+\noindent donde 4 es el número de flujos en el enlace más cargado
+(\texttt{node[4].lnk[1]}). Los datos confirman que con IAT\,=\,4\,s la
+red está en el límite (R/E\,=\,0.951, util.\,=\,95\,\%) y con
+IAT\,=\,6\,s ya es estable, consistente con la predicción teórica.
+
+\subsubsection*{¿Hay loops de enrutamiento?}
+
+No se observaron loops de enrutamiento en ninguna de las simulaciones.
+El algoritmo garantiza ausencia de loops por construcción: dado que cada
+nodo calcula la distancia mínima en ambos sentidos y elige la interfaz
+correspondiente al camino más corto, el destino siempre se acerca en
+cada salto. En un anillo, esto implica que el paquete viaja
+monótonamente en una sola dirección hasta llegar al destino, sin
+posibilidad de dar vueltas. El máximo de saltos observado fue 4 (la
+distancia máxima en un anillo de 8 nodos), consistente con la ausencia
+de loops.
+
+\subsubsection*{¿Qué pasaría con muchos más nodos?}
+
+El algoritmo propuesto escala mejor que el baseline. En un anillo de
+$N$ nodos, el baseline siempre acumula todos los flujos en un único
+enlace adyacente al destino ($N-1$ flujos), con umbral de estabilidad
+$\mathrm{IAT} > N-1$. El algoritmo propuesto distribuye los flujos
+simétricamente: el enlace más cargado acumula $\lceil N/2 \rceil$
+flujos (los nodos del lado más largo), con umbral
+$\mathrm{IAT} > \lceil N/2 \rceil$. Para $N$ grande, la mejora en
+el umbral de estabilidad es del orden de $2\times$. Sin embargo, la
+fase de descubrimiento (Hello\,+\,Echo) requiere que el paquete Hello
+complete una vuelta completa al anillo, lo que implica un retardo de
+convergencia de $O(N)$ antes de que el ruteo óptimo esté disponible.
+Durante ese período, los paquetes de datos que llegan se reenvían por
+\texttt{lnk[0]} (fallback al baseline). Para $N$ muy grande, este
+tiempo de convergencia puede ser significativo.
+
+\subsubsection*{¿Qué sucede si cae un nodo?}
+
+El baseline no es tolerante a fallos: si cae cualquier nodo del único
+camino posible hacia el destino, los paquetes se pierden
+indefinidamente. El algoritmo propuesto tampoco es tolerante a fallos
+en su implementación actual: la tabla de ruteo se construye una sola
+vez al inicio mediante el Hello y no se actualiza dinámicamente. Si
+un nodo cae después de la fase de descubrimiento, los paquetes que
+deban transitar por él seguirán siendo enviados en esa dirección y se
+perderán. Una extensión natural sería incorporar mensajes de Hello
+periódicos para detectar caídas y recalcular las rutas, similar al
+mecanismo de \emph{keepalive} utilizado en protocolos como OSPF o RIP.
 
 \section{Tarea estrella (opcional)}
 \label{sec:estrella}
