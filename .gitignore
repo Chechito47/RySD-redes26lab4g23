@@ -26,7 +26,7 @@ caso2_con_control.csv
 .qtenvrc
 *vscode/
 metricas.csv
-
+*.csv
 # Archivos temporales generados por LaTeX
 *.aux
 *.log
