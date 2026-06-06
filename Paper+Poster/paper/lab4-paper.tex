@@ -268,92 +268,103 @@ Este cuello de botella y las demoras asociadas subrayan la necesidad de implemen
 \subsection{Caso 2: tráfico sostenido hacia \texttt{node[5]}}
 \label{sec:caso2}
 
-En este escenario, los siete nodos restantes del anillo
+En este escenario los siete nodos restantes del anillo
 (\texttt{node[0]}--\texttt{node[4]}, \texttt{node[6]} y \texttt{node[7]})
 generan tráfico simultáneamente hacia \texttt{node[5]} con el mismo
-\texttt{packetByteSize} (125\,000 bytes $= 1$\,Mbit) e
-\texttt{interArrivalTime} exponencial. Se variaron seis valores: 0.5, 1, 2,
-4, 6 y 8 segundos, con el objetivo de determinar el umbral de estabilidad de
-la red.
+\texttt{packetByteSize} (125\,000 bytes $=1$\,Mbit) e
+\texttt{interArrivalTime} exponencial. Se exploraron seis valores: 0.5, 1,
+2, 4, 6 y 8 segundos, con el objetivo de determinar el umbral de
+estabilidad de la red bajo el algoritmo baseline.
 
-\subsubsection*{Análisis teórico del cuello de botella}
+\subsubsection*{Dirección del tráfico y cuello de botella}
 
-El algoritmo baseline reenvía todos los paquetes por \texttt{lnk[0]}
-(sentido horario). Por lo tanto, los paquetes de los nodos
-\texttt{6} y \texttt{7} deben recorrer el anillo completo en sentido
-anti-horario (6$\to$7$\to$0$\to$\ldots$\to$5), acumulando tráfico en los
-enlaces intermedios. Contando cuántos flujos independientes atraviesan cada
-enlace se obtiene:
+El archivo \texttt{.ned} define las conexiones del anillo de la siguiente
+manera:
+
+\begin{small}
+\begin{verbatim}
+node[0].toNod[1] <--> node[1].toNod[0]
+node[1].toNod[1] <--> node[2].toNod[0]
+...
+node[7].toNod[1] <--> node[0].toNod[0]
+\end{verbatim}
+\end{small}
+
+\noindent El módulo \texttt{Net} del baseline reenvía siempre por
+\texttt{toLnk[0]}, que corresponde a \texttt{toNod[0]}. Dado que
+\texttt{toNod[0]} de cada nodo $n$ está conectado a \texttt{toNod[1]} del
+nodo $n-1$, los paquetes viajan en dirección \textbf{decreciente}:
+$n \to n{-}1 \to \cdots \to 5$. Los nodos 6 y 7 quedan al otro lado del
+destino, por lo que recorren el camino largo:
+$6\to5$ (1 salto) y $7\to6\to5$ (2 saltos), mientras que el
+\texttt{node[4]} debe atravesar todo el anillo ($4\to3\to\cdots\to6\to5$,
+7 saltos). La Tabla~\ref{tab:flujos} resume los flujos acumulados
+en cada enlace.
 
 \begin{table}[!ht]
   \centering
-  \caption{Flujos acumulados por enlace bajo routing clockwise.}
+  \caption{Flujos acumulados por enlace bajo routing baseline
+           (dirección decreciente, destino \texttt{node[5]}).}
   \label{tab:flujos}
   \coltablesetup
   \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}lcc@{}}
     \toprule
-    \textbf{Enlace} & \textbf{Flujos} & \textbf{Fuentes que transitan} \\
+    \textbf{Enlace} & \textbf{Flujos} & \textbf{Nodos que transitan} \\
     \midrule
-    \texttt{node[7].lnk[0]} & 2 & \texttt{n[6]}, \texttt{n[7]} \\
-    \texttt{node[0].lnk[0]} & 3 & \texttt{n[6]}, \texttt{n[7]}, \texttt{n[0]} \\
-    \texttt{node[1].lnk[0]} & 4 & \texttt{n[6]}, \texttt{n[7]}, \texttt{n[0]}, \texttt{n[1]} \\
-    \texttt{node[2].lnk[0]} & 5 & \texttt{n[6]}--\texttt{n[2]} \\
-    \texttt{node[3].lnk[0]} & 6 & \texttt{n[6]}--\texttt{n[3]} \\
-    \texttt{node[4].lnk[0]} & 7 & todos \\
+    \texttt{node[4].lnk[0]} & 1 & \texttt{n[4]} \\
+    \texttt{node[3].lnk[0]} & 2 & \texttt{n[4]}, \texttt{n[3]} \\
+    \texttt{node[2].lnk[0]} & 3 & \texttt{n[4]}--\texttt{n[2]} \\
+    \texttt{node[1].lnk[0]} & 4 & \texttt{n[4]}--\texttt{n[1]} \\
+    \texttt{node[0].lnk[0]} & 5 & \texttt{n[4]}--\texttt{n[0]} \\
+    \texttt{node[7].lnk[0]} & 6 & \texttt{n[4]}--\texttt{n[7]} \\
+    \texttt{node[6].lnk[0]} & 7 & todos \\
     \bottomrule
   \end{tabular}%
   }
 \end{table}
 
-El enlace \texttt{node[4].lnk[0]} concentra los 7 flujos y constituye el
+El enlace \texttt{node[6].lnk[0]} concentra los 7 flujos y constituye el
 cuello de botella teórico. Su utilización es:
 
 \begin{equation}
-  \rho = \frac{7}{\lambda_{\mathrm{IAT}}} \times T_s
+  \rho = \frac{7}{\mathrm{IAT}} \times T_s
        = \frac{7}{\mathrm{IAT}} \times 1\,\mathrm{s}
        = \frac{7}{\mathrm{IAT}}
   \label{eq:rho}
 \end{equation}
 
-\noindent donde $T_s = 1\,\mathrm{Mbit} / 1\,\mathrm{Mbps} = 1\,\mathrm{s}$
-es el tiempo de servicio por paquete. La condición de estabilidad $\rho < 1$
-exige:
+\noindent donde $T_s = 1\,\mathrm{Mbit}/1\,\mathrm{Mbps} = 1\,\mathrm{s}$
+es el tiempo de servicio. La condición de estabilidad $\rho < 1$ exige:
 
 \begin{equation}
   \mathrm{IAT} > 7\,\mathrm{s}
   \label{eq:umbral}
 \end{equation}
 
-Sin embargo, los enlaces intermedios (\texttt{node[0]}--\texttt{node[3]})
-también acumulan múltiples flujos y operan como cuellos de botella en
-cascada, lo que en la práctica eleva el umbral efectivo observado en
-simulación.
-
 \subsubsection*{Resultados experimentales}
 
-La Tabla~\ref{tab:caso2-sweep} resume las métricas medidas para cada valor
-de \texttt{interArrivalTime}. La columna ``Ratio R/E'' indica la fracción de
-paquetes generados que efectivamente llegaron a destino en los 200\,s de
-simulación, y la columna ``¿Estable?'' refleja si los buffers permanecieron
-acotados y el delay convergió a un valor finito.
+La Tabla~\ref{tab:caso2-sweep} resume las métricas medidas. La columna
+``R/E'' indica la fracción de paquetes generados que llegaron a destino
+durante los 200\,s de simulación.
 
 \begin{table}[!ht]
   \centering
-  \caption{Métricas del Caso~2 en función del \texttt{interArrivalTime}.}
+  \caption{Métricas del Caso~2 en función del \texttt{interArrivalTime}.
+           BufMáx corresponde a \texttt{node[6].lnk[0]}.}
   \label{tab:caso2-sweep}
   \coltablesetup
   \resizebox{\columnwidth}{!}{%
   \begin{tabular}{@{}rrrrrrr@{}}
     \toprule
     \textbf{IAT (s)} & \textbf{Demora (s)} & \textbf{Enviados} &
-    \textbf{Recibidos} & \textbf{Ratio R/E} &
+    \textbf{Recib.} & \textbf{R/E} &
     \textbf{BufMáx} & \textbf{¿Estable?} \\
     \midrule
-    0.5 & 75.09 & 2820 & 199 & 0.071 & 422 & No \\
-    1   & 65.92 & 1422 & 199 & 0.140 & 227 & No \\
-    2   & 56.52 &  723 & 198 & 0.274 & 117 & No \\
-    4   & 39.99 &  364 & 195 & 0.536 &  52 & No \\
+    0.5 & 75.09 & 2820 & 199 & 0.071 & 421 & No \\
+    1   & 65.92 & 1422 & 199 & 0.140 & 218 & No \\
+    2   & 56.52 &  723 & 198 & 0.274 & 102 & No \\
+    4   & 39.99 &  364 & 195 & 0.536 &  50 & No \\
     6   & 17.49 &  225 & 188 & 0.836 &  25 & No \\
     8   &  6.19 &  169 & 164 & 0.970 &   4 & Sí \\
     \bottomrule
@@ -361,9 +372,9 @@ acotados y el delay convergió a un valor finito.
   }
 \end{table}
 
-La Figura~\ref{fig:caso2-estabilidad} muestra la demora media y la
-utilización del enlace más cargado (\texttt{node[1].lnk[0]}) en función
-del \texttt{interArrivalTime}.
+Las Figuras~\ref{fig:caso2-estabilidad} y~\ref{fig:caso2-util} muestran
+la evolución de la demora media y la utilización de los enlaces más
+representativos en función del \texttt{interArrivalTime}.
 
 \begin{figure}[!t]
   \centering
@@ -383,14 +394,13 @@ del \texttt{interArrivalTime}.
         (0.5,75.09)(1,65.92)(2,56.52)(4,39.99)(6,17.49)(8,6.19)
       };
       \addlegendentry{Demora media E2E}
-      % Línea umbral teórico
       \addplot[thick, red, dashed] coordinates {(7,0)(7,85)};
       \addlegendentry{Umbral teórico (IAT\,=\,7\,s)}
     \end{axis}
   \end{tikzpicture}
   \caption{Demora media extremo a extremo vs.\ \texttt{interArrivalTime}
-           en el Caso~2. La línea discontinua indica el umbral teórico
-           $\rho = 1$ (IAT\,=\,7\,s).}
+           en el Caso~2. La línea discontinua marca el umbral teórico
+           $\rho=1$ (Ec.~\ref{eq:umbral}).}
   \label{fig:caso2-estabilidad}
 \end{figure}
 
@@ -408,68 +418,70 @@ del \texttt{interArrivalTime}.
       xtick={0.5,1,2,4,6,8},
       legend style={font=\scriptsize, at={(0.98,0.98)}, anchor=north east},
     ]
-      \addplot[thick, blue, mark=square*, mark size=2pt] coordinates {
-        (0.5,99.5)(1,99.5)(2,99.5)(4,95.0)(6,65.5)(8,49.0)
+      \addplot[thick, blue, mark=*, mark size=2pt] coordinates {
+        (0.5,100.0)(1,100.0)(2,99.5)(4,98.0)(6,94.5)(8,82.5)
       };
-      \addlegendentry{\texttt{node[1].lnk[0]}}
-      \addplot[thick, orange, mark=triangle*, mark size=2pt] coordinates {
-        (0.5,100)(1,100)(2,100)(4,72.0)(6,48.0)(8,36.0)
+      \addlegendentry{\texttt{node[6].lnk[0]} (7 flujos)}
+      \addplot[thick, orange, mark=square*, mark size=2pt] coordinates {
+        (0.5,100.0)(1,100.0)(2,99.5)(4,98.0)(6,93.0)(8,72.0)
       };
-      \addlegendentry{\texttt{node[2].lnk[0]}}
-      \addplot[thick, red, mark=diamond*, mark size=2pt] coordinates {
-        (0.5,100)(1,89.0)(2,50.5)(4,26.5)(6,17.5)(8,12.5)
+      \addlegendentry{\texttt{node[7].lnk[0]} (6 flujos)}
+      \addplot[thick, green!60!black, mark=triangle*, mark size=2pt] coordinates {
+        (0.5,100.0)(1,89.0)(2,50.5)(4,26.5)(6,17.5)(8,12.5)
       };
-      \addlegendentry{\texttt{node[4].lnk[0]}}
+      \addlegendentry{\texttt{node[4].lnk[0]} (1 flujo)}
       \addplot[thick, red, dashed] coordinates {(7,0)(7,110)};
       \addlegendentry{Umbral teórico}
     \end{axis}
   \end{tikzpicture}
-  \caption{Utilización de los enlaces más representativos vs.\
-           \texttt{interArrivalTime}. Los enlaces más alejados del destino
-           saturan primero.}
+  \caption{Utilización de enlaces seleccionados vs.\ \texttt{interArrivalTime}.
+           \texttt{node[6].lnk[0]} es el cuello de botella (7 flujos);
+           \texttt{node[4].lnk[0]} transporta un solo flujo.}
   \label{fig:caso2-util}
 \end{figure}
 
 \subsubsection*{Determinación del umbral de estabilidad}
 
 Los datos experimentales confirman que \textbf{la red no es estable para
-ningún valor de \texttt{interArrivalTime} $\leq 6$\,s}. Los indicadores
-utilizados para determinar la inestabilidad son:
+ningún valor de \texttt{interArrivalTime} $\leq 6$\,s}. Los tres criterios
+utilizados para determinar inestabilidad son:
 
 \begin{enumerate}
-  \item \textbf{Ratio R/E $\ll 1$}: con IAT\,$= 1$\,s solo el 14\% de los
-        paquetes generados llegan a destino en la simulación de 200\,s;
-        el 86\% restante permanece encolado o en tránsito.
-  \item \textbf{Buffers crecientes}: el tamaño máximo de buffer crece
-        proporcionalmente al tráfico inyectado (407 paquetes con IAT\,$=
-        0.5$\,s, 117 con IAT\,$=2$\,s), sin tender a estabilizarse.
-  \item \textbf{Utilización sostenida al 100\%}: los enlaces
-        \texttt{node[0]}--\texttt{node[3].lnk[0]} operan permanentemente
-        al límite para IAT\,$\leq 2$\,s.
+  \item \textbf{Ratio R/E $\ll 1$}: con IAT\,$=1$\,s solo el 14\,\% de
+        los paquetes generados llegan a destino en 200\,s; con
+        IAT\,$=6$\,s el ratio sube a 83.6\,\% pero sigue siendo
+        significativamente menor que 1.
+  \item \textbf{Buffers crecientes}: el buffer máximo de
+        \texttt{node[6].lnk[0]} crece de 4 paquetes (IAT\,$=8$\,s)
+        a 421 paquetes (IAT\,$=0.5$\,s), sin tender a estabilizarse
+        para IAT\,$\leq 6$\,s.
+  \item \textbf{Utilización sostenida al límite}: \texttt{node[6].lnk[0]}
+        opera al 94.5\,\% con IAT\,$=6$\,s, dejando apenas margen
+        ante variaciones aleatorias del tráfico.
 \end{enumerate}
 
-Con \texttt{interArrivalTime}\,$= 8$\,s se observa el primer régimen
-estable: el ratio R/E alcanza 0.970 (casi todos los paquetes llegan), el
-buffer máximo cae a 4 paquetes, la demora media se reduce a 6.19\,s y la
-utilización del enlace más cargado baja al 82.5\%. Este resultado es
-consistente con el análisis teórico de la ecuación~(\ref{eq:umbral}):
-el umbral $\rho < 1$ requiere IAT\,$> 7$\,s, y IAT\,$= 8$\,s es el
-primer punto de la barrida experimental que lo satisface.
+Con \texttt{interArrivalTime}\,$=8$\,s se observa el primer régimen
+estable: el ratio R/E alcanza 0.970, el buffer máximo del cuello de
+botella cae a 4~paquetes, la demora media se reduce a 6.19\,s y la
+utilización de \texttt{node[6].lnk[0]} baja al 82.5\,\%. Este resultado
+es consistente con el análisis teórico de la
+Ecuación~(\ref{eq:umbral}): con IAT\,$=8$\,s se obtiene
+$\rho = 7/8 = 0.875 < 1$.
 
-Un fenómeno notable es que el cuello de botella empírico no coincide
-exactamente con el predicho teóricamente. Mientras que la
-Ecuación~(\ref{eq:rho}) señala a \texttt{node[4].lnk[0]} (7 flujos) como
-el enlace más cargado, la simulación muestra que son los enlaces
-\texttt{node[0]}--\texttt{node[2].lnk[0]} los que saturan primero ($\approx$ 100\%
-para IAT\,$\leq 2$\,s). Esto se debe a que los paquetes de los nodos
-6 y 7 recorren el camino más largo en sentido horario, saturando primero los
-primeros tramos del recorrido (los más lejanos al destino), antes de que el
-tráfico acumulado alcance a \texttt{node[4].lnk[0]}. Los buffers de los
-nodos intermedios actúan como cuellos de botella en cascada.
+Cabe destacar que la distribución de carga es marcadamente asimétrica.
+Los nodos 6 y 7 son los más favorecidos por el routing baseline (1 y 2
+saltos respectivamente), mientras que el \texttt{node[4]} recorre 7
+saltos para llegar al destino, siendo el más perjudicado. Esta asimetría
+estructural, visible en la Fig.~\ref{fig:caso2-util} donde
+\texttt{node[4].lnk[0]} tiene apenas 12.5\,\% de utilización frente al
+82.5\,\% de \texttt{node[6].lnk[0]}, es consecuencia directa del
+algoritmo baseline que ignora la distancia al destino y siempre elige
+la misma dirección de reenvío.
 
 \textit{La red garantiza equilibrio a partir de
-\texttt{interArrivalTime}\,$= 8$\,s, valor consistente con el umbral
-teórico $\rho = 7/\mathrm{IAT} < 1$, que exige IAT\,$> 7$\,s.}
+\texttt{interArrivalTime}\,$=8$\,s, valor consistente con el umbral
+teórico $\rho = 7/\mathrm{IAT} < 1$ que exige IAT\,$> 7$\,s
+(Ec.~\ref{eq:umbral}).}
 
 \section{Diseño del algoritmo de enrutamiento propuesto}
 \label{sec:diseno}
