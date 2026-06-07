@@ -1,0 +1,649 @@
+run,repetition,module,name,value
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Number of packets sent,407
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].lnk[0],Average buffer length,203.399750934
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].lnk[0],Max buffer length,407
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].lnk[0],Link utilization (%),99
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[0].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Number of packets sent,422
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].lnk[0],Average buffer length,215.03658536585
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].lnk[0],Max buffer length,422
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].lnk[0],Link utilization (%),99.5
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[1].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Number of packets sent,410
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].lnk[0],Average buffer length,205.59405940594
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].lnk[0],Max buffer length,408
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].lnk[0],Link utilization (%),100
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[2].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Number of packets sent,386
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].lnk[0],Average buffer length,194.42857142857
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].lnk[0],Max buffer length,386
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].lnk[0],Link utilization (%),99.5
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[3].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Number of packets sent,382
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].lnk[0],Average buffer length,86.864261168385
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].lnk[0],Max buffer length,182
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].lnk[0],Link utilization (%),100
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[4].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Average delay,75.090434600586
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Number of packets,199
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Average hop count,1.4673366834171
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Max hop count,5
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Hop count standard deviation,0.80257693687716
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Number of packets sent,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Average delay Src 0,115.04974314808
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Average hops Src 0,3
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Average delay Src 2,63.078123095338
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].app,Average hops Src 2,5
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].lnk[0],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].lnk[0],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].lnk[0],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[5].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Number of packets sent,421
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].lnk[0],Average buffer length,210.49512195122
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].lnk[0],Max buffer length,421
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].lnk[0],Link utilization (%),100
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[6].lnk[1],Link utilization (%),0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Average delay,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Number of packets,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Average hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Max hop count,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Hop count standard deviation,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Number of packets sent,392
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].app,Number of packets received,0
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].lnk[0],Average buffer length,194.5082382763
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].lnk[0],Max buffer length,389
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].lnk[0],Link utilization (%),100
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].lnk[1],Average buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].lnk[1],Max buffer length,NaN
+Caso2_IAT_0_5-0-20260531-22:31:09-4713,0,Network.node[7].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Number of packets sent,195
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].lnk[0],Average buffer length,100.16582064298
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].lnk[0],Max buffer length,195
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].lnk[0],Link utilization (%),99
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[0].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Number of packets sent,227
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].lnk[0],Average buffer length,112.3536
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].lnk[0],Max buffer length,227
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].lnk[0],Link utilization (%),99.5
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[1].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Number of packets sent,210
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].lnk[0],Average buffer length,103.32236842105
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].lnk[0],Max buffer length,208
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].lnk[0],Link utilization (%),100
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[2].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Number of packets sent,197
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].lnk[0],Average buffer length,86.417102966841
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].lnk[0],Max buffer length,175
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].lnk[0],Link utilization (%),99.5
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[3].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Number of packets sent,180
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].lnk[0],Average buffer length,3.6675977653631
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].lnk[0],Max buffer length,10
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].lnk[0],Link utilization (%),89
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[4].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Average delay,65.92334301888
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Number of packets,199
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Average hop count,1.9597989949749
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Max hop count,7
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Hop count standard deviation,1.3589924817502
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Number of packets sent,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Average delay Src 0,101.73118474732
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Average hops Src 0,3
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Average delay Src 2,68.061072598499
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].app,Average hops Src 2,5
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].lnk[0],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].lnk[0],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].lnk[0],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[5].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Number of packets sent,219
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].lnk[0],Average buffer length,105.28317152104
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].lnk[0],Max buffer length,218
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].lnk[0],Link utilization (%),100
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[6].lnk[1],Link utilization (%),0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Average delay,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Number of packets,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Average hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Max hop count,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Hop count standard deviation,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Number of packets sent,194
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].app,Number of packets received,0
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].lnk[0],Average buffer length,96.318104906937
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].lnk[0],Max buffer length,191
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].lnk[0],Link utilization (%),100
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].lnk[1],Average buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].lnk[1],Max buffer length,NaN
+Caso2_IAT_1-0-20260531-22:31:10-4714,0,Network.node[7].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Number of packets sent,104
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].lnk[0],Average buffer length,51.528
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].lnk[0],Max buffer length,104
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].lnk[0],Link utilization (%),99
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[0].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Number of packets sent,117
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].lnk[0],Average buffer length,58.271844660194
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].lnk[0],Max buffer length,117
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].lnk[0],Link utilization (%),99.5
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[1].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Number of packets sent,106
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].lnk[0],Average buffer length,43.038461538462
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].lnk[0],Max buffer length,94
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].lnk[0],Link utilization (%),100
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[2].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Number of packets sent,88
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].lnk[0],Average buffer length,2.9285714285714
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].lnk[0],Max buffer length,8
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].lnk[0],Link utilization (%),94.5
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[3].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Number of packets sent,101
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].lnk[0],Average buffer length,0.57920792079208
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].lnk[0],Max buffer length,2
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].lnk[0],Link utilization (%),50.5
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[4].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Average delay,56.524529743118
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Number of packets,198
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Average hop count,2.7020202020202
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Max hop count,7
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Hop count standard deviation,1.7846201261091
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Number of packets sent,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Average delay Src 0,80.095256433306
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Average hops Src 0,3
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Average delay Src 2,71.009694828378
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].app,Average hops Src 2,5
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].lnk[0],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].lnk[0],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].lnk[0],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[5].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Number of packets sent,103
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].lnk[0],Average buffer length,49.292
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].lnk[0],Max buffer length,102
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].lnk[0],Link utilization (%),99.5
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[6].lnk[1],Link utilization (%),0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Average delay,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Number of packets,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Average hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Max hop count,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Hop count standard deviation,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Number of packets sent,104
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].app,Number of packets received,0
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].lnk[0],Average buffer length,50.276
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].lnk[0],Max buffer length,102
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].lnk[0],Link utilization (%),99.5
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].lnk[1],Average buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].lnk[1],Max buffer length,NaN
+Caso2_IAT_2-0-20260531-22:31:10-4715,0,Network.node[7].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Number of packets sent,56
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].lnk[0],Average buffer length,21.965753424658
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].lnk[0],Max buffer length,52
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].lnk[0],Link utilization (%),96.5
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[0].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Number of packets sent,61
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].lnk[0],Average buffer length,6.8147208121827
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].lnk[0],Max buffer length,15
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].lnk[0],Link utilization (%),95
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[1].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Number of packets sent,51
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].lnk[0],Average buffer length,0.83391003460208
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].lnk[0],Max buffer length,3
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].lnk[0],Link utilization (%),72
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[2].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Number of packets sent,41
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].lnk[0],Average buffer length,0.53191489361702
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].lnk[0],Max buffer length,2
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].lnk[0],Link utilization (%),47
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[3].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Number of packets sent,53
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].lnk[0],Average buffer length,0.5
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].lnk[0],Max buffer length,1
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].lnk[0],Link utilization (%),26.5
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[4].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Average delay,39.992978957309
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Number of packets,195
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Average hop count,3.6923076923077
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Max hop count,7
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Hop count standard deviation,2.0148142857019
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Number of packets sent,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Average delay Src 0,50.429891958962
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Average hops Src 0,3
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Average delay Src 2,45.176134644997
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].app,Average hops Src 2,5
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].lnk[0],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].lnk[0],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].lnk[0],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[5].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Number of packets sent,51
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].lnk[0],Average buffer length,21.264705882353
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].lnk[0],Max buffer length,50
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].lnk[0],Link utilization (%),98
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[6].lnk[1],Link utilization (%),0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Average delay,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Number of packets,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Average hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Max hop count,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Hop count standard deviation,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Number of packets sent,51
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].app,Number of packets received,0
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].lnk[0],Average buffer length,22.938496583144
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].lnk[0],Max buffer length,47
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].lnk[0],Link utilization (%),98
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].lnk[1],Average buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].lnk[1],Max buffer length,NaN
+Caso2_IAT_4-0-20260531-22:31:10-4716,0,Network.node[7].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Number of packets sent,34
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].lnk[0],Average buffer length,1.4634146341463
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].lnk[0],Max buffer length,6
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].lnk[0],Link utilization (%),82
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[0].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Number of packets sent,35
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].lnk[0],Average buffer length,0.87404580152672
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].lnk[0],Max buffer length,4
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].lnk[0],Link utilization (%),65.5
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[1].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Number of packets sent,38
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].lnk[0],Average buffer length,0.53125
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].lnk[0],Max buffer length,2
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].lnk[0],Link utilization (%),48
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[2].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Number of packets sent,23
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].lnk[0],Average buffer length,0.5
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].lnk[0],Max buffer length,1
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].lnk[0],Link utilization (%),29
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[3].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Number of packets sent,35
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].lnk[0],Average buffer length,0.5
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].lnk[0],Max buffer length,1
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].lnk[0],Link utilization (%),17.5
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[4].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Average delay,17.491661724973
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Number of packets,188
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Average hop count,4.0053191489362
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Max hop count,7
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Hop count standard deviation,1.9662862751342
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Number of packets sent,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Average delay Src 0,21.694717734425
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Average hops Src 0,3
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Average delay Src 2,17.467435890673
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].app,Average hops Src 2,5
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].lnk[0],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].lnk[0],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].lnk[0],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[5].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Number of packets sent,28
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].lnk[0],Average buffer length,10.465174129353
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].lnk[0],Max buffer length,25
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].lnk[0],Link utilization (%),94.5
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[6].lnk[1],Link utilization (%),0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Average delay,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Number of packets,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Average hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Max hop count,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Hop count standard deviation,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Number of packets sent,32
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].app,Number of packets received,0
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].lnk[0],Average buffer length,4.490813648294
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].lnk[0],Max buffer length,10
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].lnk[0],Link utilization (%),93
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].lnk[1],Average buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].lnk[1],Max buffer length,NaN
+Caso2_IAT_6-0-20260531-22:31:11-4717,0,Network.node[7].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Number of packets sent,21
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].lnk[0],Average buffer length,0.58474576271186
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].lnk[0],Max buffer length,2
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].lnk[0],Link utilization (%),59
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[0].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Number of packets sent,27
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].lnk[0],Average buffer length,0.6734693877551
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].lnk[0],Max buffer length,4
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].lnk[0],Link utilization (%),49
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[1].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Number of packets sent,30
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].lnk[0],Average buffer length,0.5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].lnk[0],Max buffer length,1
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].lnk[0],Link utilization (%),36
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[2].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Number of packets sent,18
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].lnk[0],Average buffer length,0.5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].lnk[0],Max buffer length,1
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].lnk[0],Link utilization (%),21.5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[3].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Number of packets sent,25
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].lnk[0],Average buffer length,0.5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].lnk[0],Max buffer length,1
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].lnk[0],Link utilization (%),12.5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[4].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Average delay,6.1892774558437
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Number of packets,164
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Average hop count,3.9634146341463
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Max hop count,7
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Hop count standard deviation,1.9468087585485
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Number of packets sent,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Average delay Src 0,5.0088731198438
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Average hops Src 0,3
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Average delay Src 2,7.3191240790134
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].app,Average hops Src 2,5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].lnk[0],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].lnk[0],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].lnk[0],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[5].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Number of packets sent,21
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].lnk[0],Average buffer length,1.2393939393939
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].lnk[0],Max buffer length,4
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].lnk[0],Link utilization (%),82.5
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[6].lnk[1],Link utilization (%),0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Average delay,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Number of packets,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Average hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Max hop count,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Hop count standard deviation,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Number of packets sent,27
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].app,Number of packets received,0
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].lnk[0],Average buffer length,0.75694444444444
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].lnk[0],Max buffer length,4
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].lnk[0],Link utilization (%),72
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].lnk[1],Average buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].lnk[1],Max buffer length,NaN
+Caso2_IAT_8-0-20260531-22:31:11-4718,0,Network.node[7].lnk[1],Link utilization (%),0
