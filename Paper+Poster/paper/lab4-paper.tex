@@ -978,8 +978,9 @@ tiempo de convergencia puede ser significativo.
 El baseline no es tolerante a fallos: si cae cualquier nodo del único
 camino posible hacia el destino, los paquetes se pierden
 indefinidamente. El algoritmo propuesto tampoco es tolerante a fallos
-en su implementación actual: la tabla de ruteo se construye una sola
-vez al inicio mediante el Hello y no se actualiza dinámicamente. Si
+en su implementación actual: el tamaño del anillo N se descubre una sola
+vez al inicio mediante el intercambio paquetes de hello y echo, y
+luego se asume que la topología permanece inalterada. Si
 un nodo cae después de la fase de descubrimiento, los paquetes que
 deban transitar por él seguirán siendo enviados en esa dirección y se
 perderán. Una extensión natural sería incorporar mensajes de Hello
